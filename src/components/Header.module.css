@@ -1,0 +1,19 @@
+.header {
+  height: 192px;
+  background: var(--gray-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-bottom: 8px;
+}
+
+.todo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.todo span {
+  color: var(--purpleDark);
+}
