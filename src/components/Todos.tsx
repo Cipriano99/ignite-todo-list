@@ -2,26 +2,46 @@ import { NoTasks } from './NoTasks'
 import { Task } from './Task'
 import styles from './Todos.module.css'
 
-export const Todos = () => {
-  const tasks = [1]
+interface ITask {
+  content: string
+  done: boolean
+  id: number
+}
+
+interface TodoProps {
+  tasks: ITask[]
+  updateTask: (id: number, type: string) => void
+}
+
+export const Todos = ({ tasks, updateTask }: TodoProps) => {
+  const tasksSortByNoDone = tasks.sort((a, b) => Number(a.done) - Number(b.done));
+
+  const tasksDones = tasks.filter(task => task.done === true)
 
   return (
     <section className={styles.todos}>
       <div className={styles.infos}>
         <div className={styles.tasks}>
           Tarefas
-          <span>0</span>
+          <span>{tasks.length}</span>
         </div>
 
         <div className={styles.dones}>
           Concluídas
-          <span>0</span>
+          <span>{tasksDones.length} de {tasks.length}</span>
         </div>
       </div>
 
       {
-        tasks.length > 0
-          ? tasks.map(task => <Task key={task} />)
+        tasksSortByNoDone.length > 0
+          ? tasksSortByNoDone.map(
+            task =>
+              <Task
+                key={task.id}
+                data={task}
+                updateTask={updateTask}
+              />
+          )
           : <NoTasks />
       }
     </section>

@@ -2,27 +2,42 @@ import { CheckCircle, Circle, Trash } from "phosphor-react"
 import { useState } from "react"
 import styles from './Task.module.css'
 
-export const Task = () => {
-  const [checked, setChecked] = useState(true)
+interface ITask {
+  content: string
+  done: boolean
+  id: number
+}
+
+interface TaskProps {
+  data: ITask
+  updateTask: (id: number, type: string) => void
+}
+
+export const Task = ({ data, updateTask }: TaskProps) => {
 
   function handleCheckTask() {
-    setChecked(!checked)
+    updateTask(data.id, 'check')
   }
+
+  function handleDeleteTask() {
+    updateTask(data.id, 'delete')
+  }
+
 
   return (
     <div className={styles.task}>
       <div className={styles.checkbox} onClick={handleCheckTask}>
-        <input type='checkbox' checked={checked} onChange={handleCheckTask} />
+        <input type='checkbox' checked={data.done} onChange={() => { }} />
         {
-          checked ? <CheckCircle weight="fill" size={24} /> : <Circle size={24} />
+          data.done ? <CheckCircle weight="fill" size={24} /> : <Circle size={24} />
         }
       </div>
 
-      <p className={checked ? styles.overline : ''}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
+      <p className={data.done ? styles.overline : ''}>
+        {data.content}
       </p>
 
-      <button>
+      <button onClick={handleDeleteTask}>
         <Trash />
       </button>
     </div>
