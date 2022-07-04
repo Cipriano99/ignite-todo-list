@@ -1,6 +1,9 @@
+import { NoTasks } from './NoTasks'
+import { Task } from './Task'
 import styles from './Todos.module.css'
 
 export const Todos = () => {
+  const tasks = [1]
 
   return (
     <section className={styles.todos}>
@@ -16,19 +19,11 @@ export const Todos = () => {
         </div>
       </div>
 
-      <div className={styles.list}>
-        <div className={styles.noTodo}>
-          <img src="/src/assets/Clipboard.png" alt="Sem atividades" />
-
-          <strong>
-            Você ainda não tem tarefas cadastradas
-          </strong>
-
-          <span>
-            Crie tarefas e organize seus itens a fazer
-          </span>
-        </div>
-      </div>
+      {
+        tasks.length > 0
+          ? tasks.map(task => <Task key={task} />)
+          : <NoTasks />
+      }
     </section>
   )
 }
