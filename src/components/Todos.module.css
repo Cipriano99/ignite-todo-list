@@ -1,0 +1,47 @@
+.todos {
+  width: 100%;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.infos span {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  padding: 0.05rem 0.5rem;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.tasks {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.dones {
+  color: var(--purple);
+  font-weight: bold;
+}
+
+.list {
+  height: 10 rem;
+  border-top: 1px solid var(--gray-300);
+  border-radius: 0.5rem;
+}
+
+.noTodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem;
+  color: var(--gray-300);
+}
+
+.noTodo img {
+  margin-bottom: 1rem;
+}
