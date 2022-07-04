@@ -2,13 +2,27 @@ import { FormEvent, useState } from 'react'
 import { PlusCircle } from 'phosphor-react'
 import styles from './NewTodo.module.css'
 
-export const NewTodo = () => {
+interface ITask {
+  content: string
+  done: boolean
+  id: number
+}
+
+interface NewTodoProps {
+  addNewTodo: (tasks: ITask) => void
+}
+
+export const NewTodo = ({ addNewTodo }: NewTodoProps) => {
   const [newTodo, setNewTodo] = useState('')
 
   function hendleNewTodo(event: FormEvent) {
     event.preventDefault()
 
-    console.log(newTodo);
+    addNewTodo({
+      content: newTodo,
+      done: false,
+      id: Date.now()
+    })
 
     setNewTodo('')
   }

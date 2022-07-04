@@ -6,29 +6,14 @@ import { Todos } from './components/Todos'
 import styles from './App.module.css'
 import './global.css'
 
+interface ITask {
+  content: string
+  done: boolean
+  id: number
+}
+
 function App() {
-  const [tasksTodo, setTasksTodo] = useState([
-    {
-      content: 'PRIMEIRO TODO PRIMEIRO TODO PRIMEIRO TODO PRIMEIRO TODO PRIMEIRO TODO PRIMEIRO TODO PRIMEIRO TODO ',
-      done: false,
-      id: 1656970670377
-    },
-    {
-      content: 'SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO SEGUNDO TODO ',
-      done: true,
-      id: 1656970670378
-    },
-    {
-      content: 'TERCEIRO TODO TERCEIRO TODO TERCEIRO TODO TERCEIRO TODO TERCEIRO TODO TERCEIRO TODO TERCEIRO TODO ',
-      done: true,
-      id: 1656970670379
-    },
-    {
-      content: 'QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO QUARTO TODO ',
-      done: false,
-      id: 1656970670380
-    },
-  ])
+  const [tasksTodo, setTasksTodo] = useState<ITask[]>([])
 
   function updateTask(id: number, type: string) {
     if (type === 'check') {
@@ -56,12 +41,16 @@ function App() {
     setTasksTodo(prevTasks => prevTasks.filter(tasks => tasks.id !== id))
   }
 
+  function addNewTodo(task: ITask) {
+    setTasksTodo(prevTasks => [...prevTasks, task])
+  }
+
   return (
     <>
       <Header />
 
       <main className={styles.container}>
-        <NewTodo />
+        <NewTodo addNewTodo={addNewTodo} />
         <Todos tasks={tasksTodo} updateTask={updateTask} />
       </main>
     </>
