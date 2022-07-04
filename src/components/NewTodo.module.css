@@ -1,0 +1,40 @@
+.form {
+  height: 3.25rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: -1.625rem;
+}
+
+.form input {
+  background-color: var(--gray-500);
+  color: var(--gray-100);
+  padding-left: 1rem;
+  width: 100%;
+  border: 1px solid var(--gray-700);
+  border-radius: 0.5rem;
+}
+
+.form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--blueDark);
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 1rem;
+  border: 0;
+  border-radius: 0.5rem;
+  transition: background 0.1s;
+}
+
+.form button:hover {
+  background-color: var(--blue);
+}
+
+.form button svg {
+  height: 1rem;
+  width: 1rem;
+}
