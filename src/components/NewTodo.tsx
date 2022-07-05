@@ -2,15 +2,7 @@ import { FormEvent, useState } from 'react'
 import { PlusCircle } from 'phosphor-react'
 import styles from './NewTodo.module.css'
 
-interface ITask {
-  content: string
-  done: boolean
-  id: number
-}
-
-interface NewTodoProps {
-  addNewTodo: (tasks: ITask) => void
-}
+import { ITask, NewTodoProps } from '../types'
 
 export const NewTodo = ({ addNewTodo }: NewTodoProps) => {
   const [newTodo, setNewTodo] = useState('')

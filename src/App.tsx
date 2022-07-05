@@ -6,11 +6,7 @@ import { Todos } from './components/Todos'
 import styles from './App.module.css'
 import './global.css'
 
-interface ITask {
-  content: string
-  done: boolean
-  id: number
-}
+import { ITask } from './types'
 
 function App() {
   const [tasksTodo, setTasksTodo] = useState<ITask[]>([])

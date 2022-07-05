@@ -1,20 +1,9 @@
 import { CheckCircle, Circle, Trash } from "phosphor-react"
-import { useState } from "react"
 import styles from './Task.module.css'
 
-interface ITask {
-  content: string
-  done: boolean
-  id: number
-}
-
-interface TaskProps {
-  data: ITask
-  updateTask: (id: number, type: string) => void
-}
+import { TaskProps } from "../types"
 
 export const Task = ({ data, updateTask }: TaskProps) => {
-
   function handleCheckTask() {
     updateTask(data.id, 'check')
   }
@@ -22,7 +11,6 @@ export const Task = ({ data, updateTask }: TaskProps) => {
   function handleDeleteTask() {
     updateTask(data.id, 'delete')
   }
-
 
   return (
     <div className={styles.task}>

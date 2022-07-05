@@ -2,16 +2,7 @@ import { NoTasks } from './NoTasks'
 import { Task } from './Task'
 import styles from './Todos.module.css'
 
-interface ITask {
-  content: string
-  done: boolean
-  id: number
-}
-
-interface TodoProps {
-  tasks: ITask[]
-  updateTask: (id: number, type: string) => void
-}
+import { TodoProps } from '../types';
 
 export const Todos = ({ tasks, updateTask }: TodoProps) => {
   const tasksSortByNoDone = tasks.sort((a, b) => Number(a.done) - Number(b.done));
